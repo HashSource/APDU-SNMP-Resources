@@ -1,0 +1,1724 @@
+SNMPPDU-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+
+    MODULE-IDENTITY, OBJECT-TYPE, Integer32,
+    NOTIFICATION-TYPE                       FROM SNMPv2-SMI
+    SnmpAdminString                         FROM SNMP-FRAMEWORK-MIB
+    RowStatus, StorageType ,DisplayString   FROM SNMPv2-TC;
+
+pdu OBJECT IDENTIFIER ::= { enterprises 23273}
+apdu OBJECT IDENTIFIER ::= { pdu 3 }
+
+
+master OBJECT IDENTIFIER ::= { apdu 1 }
+masterpdu OBJECT IDENTIFIER ::= { master 1 }
+masterInformation OBJECT IDENTIFIER ::= { masterpdu 1 }
+masterP1 OBJECT IDENTIFIER ::= { masterpdu 2 }
+masterP2 OBJECT IDENTIFIER ::= { masterpdu 3 }
+masterP3 OBJECT IDENTIFIER ::= { masterpdu 4 }
+masterOutputName OBJECT IDENTIFIER ::= { masterpdu 5 }
+masterOutputStatus OBJECT IDENTIFIER ::= { masterpdu 6 }
+masterOutputCurrect OBJECT IDENTIFIER ::= { masterpdu 7 }
+masterOutputCurrectMin OBJECT IDENTIFIER ::= { masterpdu 8 }
+masterOutputCurrectMax OBJECT IDENTIFIER ::= { masterpdu 9 }
+masterOutputEnergy OBJECT IDENTIFIER ::= { masterpdu 10 }
+masterSerson OBJECT IDENTIFIER ::= { masterpdu 11 }
+masterSersonThreshold OBJECT IDENTIFIER ::= { masterpdu 12 }
+
+MasterDeviceName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    MAX-ACCESS read-write
+    STATUS current
+    DESCRIPTION
+            "device name."
+    ::= { masterInformation 1 }
+    
+MasterDeviceType OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "device type."
+    ::= { masterInformation 2 }
+    
+MasterDeviceOutputNum OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "device output number."
+    ::= { masterInformation 3 }
+    
+MasterDeviceMac OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "device mac."
+    ::= { masterInformation 4 }
+
+
+  
+MasterVoltageP1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 1 total voltage."
+    ::= { masterP1 1 }
+    
+MasterCurrectP1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 1 total currect."
+    ::= { masterP1 2 }
+
+MasterPowerP1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 1 total currect."
+    ::= { masterP1 3 }
+
+MasterPFP1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 1 total currect."
+    ::= { masterP1 4 }
+
+MasterEnergyP1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 1 total currect."
+    ::= { masterP1 5 }
+    
+MasterVoltageMinP1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 1 total currect."
+    ::= { masterP1 6 }
+
+MasterVoltageMaxP1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 1 total currect."
+    ::= { masterP1 7 }
+    
+MasterCurrectMinP1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 1 total currect."
+    ::= { masterP1 8 }
+
+MasterCurrectMaxP1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 1 total currect."
+    ::= { masterP1 9 }
+    
+
+
+MasterVoltageP2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 2 total voltage."
+    ::= { masterP2 1 }
+    
+MasterCurrectP2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 2 total currect."
+    ::= { masterP2 2 }
+
+MasterPowerP2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 2 total currect."
+    ::= { masterP2 3 }
+
+MasterPFP2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 2 total currect."
+    ::= { masterP2 4 }
+
+MasterEnergyP2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 2 total currect."
+    ::= { masterP2 5 }
+    
+MasterVoltageMinP2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 2 total currect."
+    ::= { masterP2 6 }
+
+MasterVoltageMaxP2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 2 total currect."
+    ::= { masterP2 7 }
+    
+MasterCurrectMinP2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 2 total currect."
+    ::= { masterP2 8 }
+
+MasterCurrectMaxP2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 2 total currect."
+    ::= { masterP2 9 }
+
+
+
+MasterVoltageP3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 3 total voltage."
+    ::= { masterP3 1 }
+    
+MasterCurrectP3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 3 total currect."
+    ::= { masterP3 2 }
+
+MasterPowerP3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 3 total currect."
+    ::= { masterP3 3 }
+
+MasterPFP3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 3 total currect."
+    ::= { masterP3 4 }
+
+MasterEnergyP3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 3 total currect."
+    ::= { masterP3 5 }
+    
+MasterVoltageMinP3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 3 total currect."
+    ::= { masterP3 6 }
+
+MasterVoltageMaxP3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 3 total currect."
+    ::= { masterP3 7 }
+    
+MasterCurrectMinP3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 3 total currect."
+    ::= { masterP3 8 }
+
+MasterCurrectMaxP3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "Master Line 3 total currect."
+    ::= { masterP3 9 }
+
+
+
+MasterOutputOneName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 1 }
+
+MasterOutputTwoName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 2 }
+    
+MasterOutputThreeName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 3 }
+    
+    
+MasterOutputFourName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 4 }
+    
+    
+MasterOutputFiveName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 5 }
+    
+    
+ MasterOutputSixName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 6 }
+    
+    
+MasterOutputSevenName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 7 }
+    
+    
+MasterOutputEightName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 8 }
+    
+    
+MasterOutputNineName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 9 }
+    
+MasterOutputTenName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 10 }
+    
+MasterOutputElevenName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 11 }
+    
+    
+MasterOutputTwelveName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 12 }
+    
+MasterOutputThirteenName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 13 }
+    
+MasterOutputFourteenName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 14 }
+    
+MasterOutputFifteenName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 15 }
+    
+MasterOutputSixteenName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 16 }
+    
+MasterOutputSeventeenName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 17 }
+    
+MasterOutputEighteenName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 18 }
+    
+MasterOutputNineteenName OBJECT-TYPE
+	SYNTAX DisplayString (SIZE (255))
+	ACCESS read-write
+	STATUS optional
+	DESCRIPTION
+			"output name."
+	::= { masterOutputName 19 }
+    
+MasterOutputTwentyName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 20 }
+    
+MasterOutputTwentyOneName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 21 }
+    
+MasterOutputTwentyTwoName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 22 }
+    
+MasterOutputTwentyThreeName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 23 }
+    
+MasterOutputTwentyFourName OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output name."
+    ::= { masterOutputName 24 }
+
+
+
+MasterOutputOneStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 1 }
+
+MasterOutputTwoStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 2 }
+    
+MasterOutputThreeStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 3 }
+    
+    
+MasterOutputFourStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 4 }
+    
+    
+MasterOutputFiveStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 5 }
+    
+    
+ MasterOutputSixStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 6 }
+    
+    
+MasterOutputSevenStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 7 }
+    
+    
+MasterOutputEightStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 8 }
+    
+    
+MasterOutputNineStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 9 }
+    
+MasterOutputTenStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 10 }
+    
+MasterOutputElevenStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 11 }
+    
+    
+MasterOutputTwelveStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 12 }
+    
+MasterOutputThirteenStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 13 }
+    
+MasterOutputFourteenStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 14 }
+    
+MasterOutputFifteenStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 15 }
+    
+MasterOutputSixteenStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 16 }
+    
+MasterOutputSeventeenStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 17 }
+    
+MasterOutputEighteenStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 18 }
+    
+MasterOutputNineteenStatus OBJECT-TYPE
+	SYNTAX DisplayString (SIZE (255))
+	ACCESS read-write
+	STATUS optional
+	DESCRIPTION
+			"output status."
+	::= { masterOutputStatus 19 }
+    
+MasterOutputTwentyStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 20 }
+    
+MasterOutputTwentyOneStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 21 }
+    
+MasterOutputTwentyTwoStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 22 }
+    
+MasterOutputTwentyThreeStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 23 }
+    
+MasterOutputTwentyFourStatus OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-write
+    STATUS optional
+    DESCRIPTION
+            "output status."
+    ::= { masterOutputStatus 24 }
+    
+
+
+
+MasterOutputOneCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 1 }
+
+MasterOutputTwoCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 2 }
+    
+MasterOutputThreeCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 3 }
+    
+    
+MasterOutputFourCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 4 }
+    
+    
+MasterOutputFiveCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 5 }
+    
+    
+ MasterOutputSixCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 6 }
+    
+    
+MasterOutputSevenCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 7 }
+    
+    
+MasterOutputEightCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 8 }
+    
+    
+MasterOutputNineCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 9 }
+    
+MasterOutputTenCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 10 }
+    
+MasterOutputElevenCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 11 }
+    
+    
+MasterOutputTwelveCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 12 }
+    
+MasterOutputThirteenCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 13 }
+    
+MasterOutputFourteenCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 14 }
+    
+MasterOutputFifteenCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 15 }
+    
+MasterOutputSixteenCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 16 }
+    
+MasterOutputSeventeenCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 17 }
+    
+MasterOutputEighteenCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 18 }
+    
+MasterOutputNineteenCurrect OBJECT-TYPE
+	SYNTAX DisplayString (SIZE (255))
+	ACCESS read-only
+	STATUS optional
+	DESCRIPTION
+			"output currect."
+	::= { masterOutputCurrect 19 }
+    
+MasterOutputTwentyCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 20 }
+    
+MasterOutputTwentyOneCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 21 }
+    
+MasterOutputTwentyTwoCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 22 }
+    
+MasterOutputTwentyThreeCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 23 }
+    
+MasterOutputTwentyFourCurrect OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output currect."
+    ::= { masterOutputCurrect 24 }
+
+
+
+
+MasterOutputOneCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 1 }
+
+MasterOutputTwoCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 2 }
+    
+MasterOutputThreeCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 3 }
+    
+    
+MasterOutputFourCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 4 }
+    
+    
+MasterOutputFiveCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 5 }
+    
+    
+ MasterOutputSixCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 6 }
+    
+    
+MasterOutputSevenCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 7 }
+    
+    
+MasterOutputEightCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 8 }
+    
+    
+MasterOutputNineCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 9 }
+    
+MasterOutputTenCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 10 }
+    
+MasterOutputElevenCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 11 }
+    
+    
+MasterOutputTwelveCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 12 }
+    
+MasterOutputThirteenCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 13 }
+    
+MasterOutputFourteenCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 14 }
+    
+MasterOutputFifteenCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 15 }
+    
+MasterOutputSixteenCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 16 }
+    
+MasterOutputSeventeenCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 17 }
+    
+MasterOutputEighteenCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 18 }
+    
+MasterOutputNineteenCurrectMin OBJECT-TYPE
+	SYNTAX DisplayString (SIZE (255))
+	ACCESS read-only
+	STATUS optional
+	DESCRIPTION
+			"output threshold."
+	::= { masterOutputCurrectMin 19 }
+    
+MasterOutputTwentyCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 20 }
+    
+MasterOutputTwentyOneCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 21 }
+    
+MasterOutputTwentyTwoCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 22 }
+    
+MasterOutputTwentyThreeCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 23 }
+    
+MasterOutputTwentyFourCurrectMin OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMin 24 }
+    
+
+
+
+
+MasterOutputOneCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 1 }
+
+MasterOutputTwoCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 2 }
+    
+MasterOutputThreeCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 3 }
+    
+    
+MasterOutputFourCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 4 }
+    
+    
+MasterOutputFiveCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 5 }
+    
+    
+ MasterOutputSixCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 6 }
+    
+    
+MasterOutputSevenCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 7 }
+    
+    
+MasterOutputEightCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 8 }
+    
+    
+MasterOutputNineCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 9 }
+    
+MasterOutputTenCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 10 }
+    
+MasterOutputElevenCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 11 }
+    
+    
+MasterOutputTwelveCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 12 }
+    
+MasterOutputThirteenCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 13 }
+    
+MasterOutputFourteenCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 14 }
+    
+MasterOutputFifteenCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 15 }
+    
+MasterOutputSixteenCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 16 }
+    
+MasterOutputSeventeenCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 17 }
+    
+MasterOutputEighteenCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 18 }
+    
+MasterOutputNineteenCurrectMax OBJECT-TYPE
+	SYNTAX DisplayString (SIZE (255))
+	ACCESS read-only
+	STATUS optional
+	DESCRIPTION
+			"output threshold."
+	::= { masterOutputCurrectMax 19 }
+    
+MasterOutputTwentyCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 20 }
+    
+MasterOutputTwentyOneCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 21 }
+    
+MasterOutputTwentyTwoCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 22 }
+    
+MasterOutputTwentyThreeCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 23 }
+    
+MasterOutputTwentyFourCurrectMax OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output threshold."
+    ::= { masterOutputCurrectMax 24 }
+
+
+
+
+
+MasterOutputOneEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 1 }
+
+MasterOutputTwoEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 2 }
+    
+MasterOutputThreeEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 3 }
+    
+    
+MasterOutputFourEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 4 }
+    
+    
+MasterOutputFiveEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 5 }
+    
+    
+ MasterOutputSixEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 6 }
+    
+    
+MasterOutputSevenEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 7 }
+    
+    
+MasterOutputEightEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 8 }
+    
+    
+MasterOutputNineEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 9 }
+    
+MasterOutputTenEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 10 }
+    
+MasterOutputElevenEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 11 }
+    
+    
+MasterOutputTwelveEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 12 }
+    
+MasterOutputThirteenEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 13 }
+    
+MasterOutputFourteenEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 14 }
+    
+MasterOutputFifteenEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 15 }
+    
+MasterOutputSixteenEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 16 }
+    
+MasterOutputSeventeenEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 17 }
+    
+MasterOutputEighteenEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 18 }
+    
+MasterOutputNineteenEnergy OBJECT-TYPE
+	SYNTAX DisplayString (SIZE (255))
+	ACCESS read-only
+	STATUS optional
+	DESCRIPTION
+			"output energy."
+	::= { masterOutputEnergy 19 }
+    
+MasterOutputTwentyEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 20 }
+    
+MasterOutputTwentyOneEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 21 }
+    
+MasterOutputTwentyTwoEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 22 }
+    
+MasterOutputTwentyThreeEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 23 }
+    
+MasterOutputTwentyFourEnergy OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "output energy."
+    ::= { masterOutputEnergy 24 }
+
+
+MasterTemperature1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 1 }
+    
+MasterTemperature2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 2 }
+    
+MasterTemperature3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 3 }
+    
+MasterTemperature4 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 4 }
+    
+MasterHumidity1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 5 }
+    
+MasterHumidity2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 6 }
+    
+MasterHumidity3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 7 }
+    
+MasterHumidity4 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 8 }
+    
+MasterDoor1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 9 }
+    
+MasterDoor2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 10 }
+    
+MasterSmoke OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 11 }
+    
+MasterWater OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson."
+    ::= { masterSerson 12 }
+
+
+MasterTemperatureMin1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 1 }
+
+MasterTemperatureMin2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 2 }
+    
+MasterTemperatureMin3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 3 }
+
+MasterTemperatureMin4 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 4 }
+    
+MasterTemperatureMax1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 5 }   
+    
+MasterTemperatureMax2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 6 }   
+    
+MasterTemperatureMax3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 7 }     
+    
+MasterTemperatureMax4 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 8 }   
+    
+MasterHumidityMin1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 9 }  
+ 
+MasterHumidityMin2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 10 }  
+ 
+MasterHumidityMin3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 11 }   
+ 
+MasterHumidityMin4 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 12 } 
+ 
+MasterHumidityMax1 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 13 } 
+    
+MasterHumidityMax2 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 14 } 
+     
+     
+MasterHumidityMax3 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 15 } 
+     
+MasterHumidityMax4 OBJECT-TYPE
+    SYNTAX DisplayString (SIZE (255))
+    ACCESS read-only
+    STATUS optional
+    DESCRIPTION
+            "serson threshold."
+    ::= { masterSersonThreshold 16 }      
+     
+     
+
+END
